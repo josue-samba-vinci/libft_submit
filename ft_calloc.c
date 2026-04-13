@@ -17,12 +17,12 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*tab;
 
 	if (nmemb == 0 || size == 0)
+		return (malloc(1));
+	if (nmemb > SIZE_MAX / size)
 		return (NULL);
-	//if (nmemb > SIZE_MAX / size)
-	//	return (NULL);
 	tab = malloc(nmemb * size);
 	if (!tab)
 		return (NULL);
-	ft_bzero(tab, nmemb * size);
+	ft_memset(tab, 0, nmemb * size);
 	return (tab);
 }
